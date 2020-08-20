@@ -1,0 +1,28 @@
+@import "../../assets/scss/utils";
+
+.Pagination {
+  display: flex;
+  align-items: center;
+
+  &-Btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    box-shadow: 0 0 4px 1px deepskyblue;
+    color: deepskyblue;
+    background-color: map_get($colors, bg-dark);
+  }
+
+  &-List {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &-Item {
+    margin: 0 10px;
+  }
+}

@@ -30,6 +30,12 @@ module.exports = {
   ],
   rules: {
     // JS
+    "object-curly-newline": [2, {
+      "ObjectExpression": {
+        "consistent": true,
+        "minProperties": 5,
+      },
+    }],
     "semi": [2, "always"],
     "prefer-const": 2,
     "curly": [2, "all"],

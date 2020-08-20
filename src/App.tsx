@@ -1,21 +1,25 @@
 import React from 'react';
-import { observer } from 'mobx-react';
-import store from './store';
+import { Provider } from 'mobx-react';
 
+/* components */
+import Pagination from './components/Pagination';
+
+/* stores */
+import pagesStore from './stores/pages-store';
+
+/* styles */
 import './App.scss';
 
-const App = observer(() => {
+const stores = { pagesStore };
+
+const App = () => {
   return (
-    <div className="App">
-      <ul className="App-List">
-        {store.pages.map(page => (
-          <li key={page.id} className="App-Item">
-            {page.name}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Provider {...stores}>
+      <div className="App">
+        <Pagination />
+      </div>
+    </Provider>
   );
-});
+};
 
 export default App;
