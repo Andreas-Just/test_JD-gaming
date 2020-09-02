@@ -15,16 +15,30 @@ class PagesStore {
         name: page,
         isActive: false,
       }));
-    console.log(preparedPages)
 
     runInAction(() => {
       this.pages = preparedPages;
     });
   };
+
+  selectPage(id: number) {
+    if (this.pages[id].isActive) {
+      return;
+    }
+
+    const pages = this.pages.map(page => (
+      page.id === id
+        ? { ...page, isActive: true }
+        : { ...page, isActive: false }
+    ));
+
+    this.pages = pages;
+  }
 }
 
 decorate(PagesStore, {
   pages: observable,
+  selectPage: action,
   getPages: action.bound,
 });
 

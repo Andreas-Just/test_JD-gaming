@@ -1,0 +1,14 @@
+@import "../../assets/scss/utils";
+
+.Page {
+  margin: 0 10px;
+  padding: 10px 10px 12px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 1px deepskyblue,
+    inset 0 0 0 3px map_get($colors, bg-dark);
+
+  &_active {
+    color: black;
+    background-color: goldenrod;
+  }
+}
