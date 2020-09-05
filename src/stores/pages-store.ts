@@ -14,6 +14,7 @@ class PagesStore {
         id: idx,
         name: page,
         isActive: false,
+        display: true,
       }));
 
     runInAction(() => {
@@ -34,12 +35,31 @@ class PagesStore {
 
     this.pages = pages;
   }
+
+  hiddenPage(bool: boolean, id: number) {
+    if (bool) {
+      return;
+    } else {
+      console.log(this.pages[id].isActive);
+
+      if (this.pages[id].isActive) {
+        const idx: number = this.pages.find(page => (
+          page.display && !page.isActive
+        ))?.id || 0;
+
+        this.pages[idx].display = false;
+      } else {
+        this.pages[id].display = false;
+      }
+    }
+  }
 }
 
 decorate(PagesStore, {
   pages: observable,
-  selectPage: action,
   getPages: action.bound,
+  selectPage: action,
+  hiddenPage: action,
 });
 
 const pagesStore = new PagesStore();

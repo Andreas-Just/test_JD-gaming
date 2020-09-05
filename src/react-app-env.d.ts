@@ -5,4 +5,5 @@ interface IPage {
   id: number;
   name: string;
   isActive: boolean;
+  display: boolean;
 }

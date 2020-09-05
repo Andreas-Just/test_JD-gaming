@@ -36,6 +36,7 @@ module.exports = {
         "minProperties": 5,
       },
     }],
+    "no-useless-return": 'off',
     "semi": [2, "always"],
     "prefer-const": 2,
     "curly": [2, "all"],

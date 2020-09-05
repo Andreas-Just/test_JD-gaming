@@ -2,10 +2,12 @@
 
 .Pagination {
   display: flex;
+  padding: 0 10px;
+  width: 100%;
   align-items: center;
 
   &-Btn {
-    width: 40px;
+    min-width: 40px;
     height: 40px;
     border: none;
     outline: none;
@@ -17,8 +19,17 @@
 
   &-List {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    flex-grow: 1;
     margin: 0;
-    padding: 0;
+    padding: 0 15px;
     list-style: none;
+    overflow-x: hidden;
+  }
+
+  &-Plug {
+    width: 5px;
   }
 }

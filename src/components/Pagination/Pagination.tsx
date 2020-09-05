@@ -1,17 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { observer, inject } from 'mobx-react';
-import { useInView } from 'react-intersection-observer';
+import { InView } from 'react-intersection-observer';
 import './Pagination.scss';
 import Page from '../Page';
 
 const Pagination = inject('pagesStore')(observer((
   { pagesStore }: any,
 ) => {
-  const [ref, inView] = useInView({
-    threshold: 0,
-  });
-  console.log(inView);
-
   useEffect(() => {
     pagesStore.getPages();
   }, []);
@@ -21,12 +16,18 @@ const Pagination = inject('pagesStore')(observer((
       <button className="Pagination-Btn" type="button">⮜</button>
       <ul className="Pagination-List">
         {pagesStore.pages.map((page: IPage) => (
-          <Page
-            key={page.id}
-            ref={ref}
-            page={page}
-            selectPage={() => pagesStore.selectPage(page.id)}
-          />
+          <Fragment key={page.id}>
+            <Page
+              page={page}
+              selectPage={() => pagesStore.selectPage(page.id)}
+            />
+            <InView
+              className="Pagination-Plug"
+              onChange={(inView) => pagesStore.hiddenPage(inView, page.id)}
+            >
+              {null}
+            </InView>
+          </Fragment>
         ))}
       </ul>
       <button className="Pagination-Btn" type="button">⮞</button>
