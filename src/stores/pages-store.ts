@@ -38,9 +38,9 @@ class PagesStore {
 
   hiddenPage(bool: boolean, id: number) {
     if (bool) {
+      // this.pages[id].display = true;
       return;
     } else {
-      console.log(this.pages[id].isActive);
 
       if (this.pages[id].isActive) {
         const idx: number = this.pages.find(page => (

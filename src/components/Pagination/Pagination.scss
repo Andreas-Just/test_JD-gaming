@@ -2,8 +2,8 @@
 
 .Pagination {
   display: flex;
-  padding: 0 10px;
-  width: 100%;
+  width: 50%;
+  height: 100px;
   align-items: center;
 
   &-Btn {
@@ -18,18 +18,34 @@
   }
 
   &-List {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    height: 100px;
+    height: 100%;
     flex-grow: 1;
     margin: 0;
-    padding: 0 15px;
+    padding: 0 5px;
     list-style: none;
     overflow-x: hidden;
   }
 
   &-Plug {
-    width: 5px;
+    position: relative;
+    width: 1px;
+
+    &_display {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $largestMobileScreen) {
+  .Pagination {
+    padding: 0 8px;
+    width: 100%;
   }
 }

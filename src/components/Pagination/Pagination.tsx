@@ -22,6 +22,7 @@ const Pagination = inject('pagesStore')(observer((
               selectPage={() => pagesStore.selectPage(page.id)}
             />
             <InView
+              as="li"
               className="Pagination-Plug"
               onChange={(inView) => pagesStore.hiddenPage(inView, page.id)}
             >
