@@ -2,7 +2,7 @@
 
 .Pagination {
   display: flex;
-  width: 50%;
+  width: 100%;
   height: 100px;
   align-items: center;
 
@@ -20,26 +20,14 @@
   &-List {
     position: relative;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
     flex-grow: 1;
     margin: 0;
-    padding: 0 5px;
+    padding: 0 10px;
     list-style: none;
     overflow-x: hidden;
-  }
-
-  &-Plug {
-    position: relative;
-    width: 1px;
-
-    &_display {
-      position: absolute;
-      top: 0;
-      right: 0;
-      display: none;
-    }
   }
 }
 

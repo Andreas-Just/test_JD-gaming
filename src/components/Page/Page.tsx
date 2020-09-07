@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import cn from 'classnames';
 import './Page.scss';
 import { observer } from 'mobx-react';
+import { useInView } from 'react-intersection-observer'
 
 type Props = {
   page: IPage;
-  selectPage: (id: number) => void;
+  pagesStore: any;
 };
 
-const Page: React.FC<Props> = (observer(({ page, selectPage }) => {
+const Page: React.FC<Props> = (observer(({ page, pagesStore }) => {
   const { id, name, isActive, display } = page;
+  const [ref, inView, entry] = useInView({
+    threshold: 1,
+  });
+
+  useEffect(() => {
+    if (entry) {
+      pagesStore.hiddenPage(inView, page.id);
+    }
+  }, [inView, page, entry]);
 
   return (
     <li
@@ -18,8 +28,9 @@ const Page: React.FC<Props> = (observer(({ page, selectPage }) => {
         Page_active: isActive,
         Page_display: !display,
       })}
-      onClick={() => selectPage(id)}
+      onClick={() => pagesStore.selectPage(id)}
       aria-hidden="true"
+      ref={ref}
     >
       {name}
     </li>

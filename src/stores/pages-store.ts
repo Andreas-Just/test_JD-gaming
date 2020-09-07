@@ -36,21 +36,17 @@ class PagesStore {
     this.pages = pages;
   }
 
-  hiddenPage(bool: boolean, id: number) {
-    if (bool) {
-      // this.pages[id].display = true;
-      return;
+  hiddenPage(inView: boolean, id: number) {
+    if (inView) {
+      this.pages[id].display = true; // ??
+    } else if (this.pages[id].isActive) {
+      const idx: number | undefined = this.pages.find(page => (
+        page.display && !page.isActive
+      ))?.id || 0;
+
+      this.pages[idx].display = false;
     } else {
-
-      if (this.pages[id].isActive) {
-        const idx: number = this.pages.find(page => (
-          page.display && !page.isActive
-        ))?.id || 0;
-
-        this.pages[idx].display = false;
-      } else {
-        this.pages[id].display = false;
-      }
+      this.pages[id].display = false;
     }
   }
 }
